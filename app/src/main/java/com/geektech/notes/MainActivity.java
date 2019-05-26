@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         startActivity(new Intent(this, AddNotesActivity.class));
         //animation
         overridePendingTransition(R.anim.right_in_alpha, R.anim.left_out_alpha);
+        finish();
     }
 
     //searching notes from menu

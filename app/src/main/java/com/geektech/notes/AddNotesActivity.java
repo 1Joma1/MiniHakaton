@@ -54,6 +54,7 @@ public class AddNotesActivity extends AppCompatActivity {
             note.setTitle(title);
             note.setDesc(desc);
             App.getInstance().getDatabase().noteDao().insert(note);
+            startActivity(new Intent(this, MainActivity.class));
             finish();
             overridePendingTransition(R.anim.right_in_alpha, R.anim.left_out_alpha);
         }
