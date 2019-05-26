@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface NoteDao {
     @Query("SELECT * FROM Note")
-    LiveData<List<Note>> getAll();
+    List<Note> getAll();
 
     @Query("SELECT * FROM Note WHERE id = :id")
     Note getById(long id);

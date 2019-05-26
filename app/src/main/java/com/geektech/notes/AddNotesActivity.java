@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.geektech.notes.room.Note;
 
-import java.util.Calendar;
 
 public class AddNotesActivity extends AppCompatActivity {
 

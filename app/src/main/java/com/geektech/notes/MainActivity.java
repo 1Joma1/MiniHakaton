@@ -1,5 +1,6 @@
 package com.geektech.notes;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v7.widget.SearchView;
+import android.widget.Toast;
 
 import com.geektech.notes.room.Note;
 
@@ -28,17 +30,16 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        App.getInstance().getDatabase().noteDao().getAll().observe(this, new Observer<List<Note>>() {
-            @Override
-            public void onChanged(@Nullable List<Note> notes) {
-                note.clear();
-                note.addAll(notes);
-            }
-        });
+        adapter = new NoteAdapter(note);
         recyclerView = findViewById(R.id.my_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new NoteAdapter(note));
-    }
+        recyclerView.setAdapter(adapter);
+
+        note.clear();
+        note.addAll(App.getInstance().getDatabase().noteDao().getAll());
+        if (note.isEmpty()) Toast.makeText(this, "Нет заметки", Toast.LENGTH_LONG).show();
+        adapter.notifyDataSetChanged();
+}
 
     public void addNote(View view) {
         startActivity(new Intent(this, AddNotesActivity.class));
