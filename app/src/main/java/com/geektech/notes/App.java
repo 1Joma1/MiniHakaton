@@ -5,6 +5,7 @@ import android.arch.persistence.room.Room;
 
 import com.geektech.notes.room.AppDatabase;
 
+//we add App class to make the database available to any class
 public class App extends Application {
 
     private AppDatabase appDatabase;

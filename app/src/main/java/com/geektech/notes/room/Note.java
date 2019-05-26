@@ -5,9 +5,11 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
 
+//Note class is our model we made is serializable to write it to database
 @Entity
 public class Note implements Serializable {
 
+    //id will be auto generated
     @PrimaryKey(autoGenerate = true)
     private long id;
     private String Title;

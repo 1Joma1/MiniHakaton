@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:layout_margin="10dp"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
@@ -21,6 +20,7 @@
         android:text="+"
         android:textColor="#fff"
         android:textSize="30sp"
+        android:layout_margin="20dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:background="@drawable/rounded_btn" />

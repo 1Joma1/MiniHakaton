@@ -1,7 +1,6 @@
 package com.geektech.notes;
 
-import android.app.DatePickerDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.TextView;
 
 import com.geektech.notes.room.Note;
 
-
+//this class adds notes and edits them
 public class AddNotesActivity extends AppCompatActivity {
 
     TextView etTitle, etDes;
@@ -26,11 +25,12 @@ public class AddNotesActivity extends AppCompatActivity {
         etDes = findViewById(R.id.etDes);
         Button b = findViewById(R.id.btnSave);
 
+        //if we receive a note we take the info
         note = (Note) getIntent().getSerializableExtra("note");
         if (note != null) {
             etTitle.setText(note.getTitle());
             etDes.setText(note.getDesc());
-            b.setText("Обновить");
+            b.setText("Изменить");
         } else b.setText("Сохранить");
 
     }
@@ -39,13 +39,17 @@ public class AddNotesActivity extends AppCompatActivity {
         String title = etTitle.getText().toString().trim();
         String desc = etDes.getText().toString().trim();
         if (time == 0) time = System.currentTimeMillis();
+        //if we receive a note we edit it, update in database
         if (note != null) {
             note.setTitle(title);
             note.setDesc(desc);
             App.getInstance().getDatabase().noteDao().update(note);
+            startActivity(new Intent(this, MainActivity.class));
             finish();
             overridePendingTransition(R.anim.right_in_alpha, R.anim.left_out_alpha);
-        } else {
+        }
+        //else we create a note, add to database
+        else {
             Note note = new Note();
             note.setTitle(title);
             note.setDesc(desc);

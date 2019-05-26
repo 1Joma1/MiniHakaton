@@ -12,14 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="26sp"
-        android:text="Test"
+        android:text="@string/test"
         android:textColor="#000"/>
     <TextView
         android:id="@+id/tvDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:text="Test"
+        android:text="@string/test"
         android:textColor="#000"/>
 
 </LinearLayout>

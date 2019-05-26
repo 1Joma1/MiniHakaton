@@ -4,17 +4,18 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="15dp">
+
     <EditText
         android:id="@+id/etTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Название"/>
+        android:hint="@string/title"/>
 
     <EditText
         android:id="@+id/etDes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Описание"/>
+        android:hint="@string/description"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:onClick="onClickSave"
-            android:text="Сохранить"
+            android:text="@string/save"
             android:textColor="#fff"
             android:background="#02D10B"
             android:layout_height="wrap_content" />
